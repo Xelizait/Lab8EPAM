@@ -14,7 +14,7 @@ namespace Lab8EPAM
         private IWebDriver _driver;
         private WebDriverWait _wait;
 
-        private const string TestEmail = "testingepam@internet.ru";
+        private const string TestEmail = "yecopix500@wolfpat.com";
         private const string TestPassword = "Admin123";
 
         [SetUp]
