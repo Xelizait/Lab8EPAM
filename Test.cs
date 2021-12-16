@@ -40,7 +40,7 @@ namespace Lab8EPAM
         {
             var libertexPage = new LibertexPage(driver);
             libertexPage.OpenPage().Login().CloseAllDeals();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(8);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(12);
             Assert.AreEqual(libertexPage.InvestedMoneyText.Text, "$0.00");
         }
     }
