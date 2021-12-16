@@ -24,6 +24,10 @@ namespace Lab8EPAM
         public IWebElement ConfirmBuyingButton => _wait.Until(_driver => _driver.FindElement(By.CssSelector("div.a-submit")));
         public IWebElement UnderstandButton => _wait.Until(_driver => _driver.FindElement(By.CssSelector("span.a-btn.a-btn-trans.a-invest-close")));
         public IWebElement NotNowButton => _wait.Until(_driver => _driver.FindElement(By.CssSelector("span.a-btn.a-btn-trans.close")));
+        public IWebElement OrderCurrency => _wait.Until(_driver => _driver.FindElement(By.XPath("//*[@id=\"region-active-investments\"]/div/div/div[5]/div/div[1]/div/div[1]/div[1]/div[1]/span[1]")));
+        public IWebElement OrderValue => _wait.Until(_driver => _driver.FindElement(By.XPath("//*[@id=\"region-active-investments\"]/div/div/div[5]/div/div[1]/div/div[1]/div[2]/div[2]/span[1]")));
+        public IWebElement OrderNumber => _wait.Until(_driver => _driver.FindElement(By.XPath("//*[@id=\"region-active-investments\"]/div/div/div[5]/div/div[1]/div/div[1]/div[2]/div[2]/span[2]")));
+
 
         public LibertexPage(IWebDriver driver)
         {
@@ -43,6 +47,17 @@ namespace Lab8EPAM
             InputEmail.SendKeys("testingepam@rambler.ru");
             InputPassword.SendKeys("AdminAdmin321");
             LogInButton.Click();
+            return this;
+        }
+
+        public LibertexPage CreateBuyDeal()
+        {
+            BuyButton.Click();
+            SelectPriceField.Click();
+            SelectPriceDropmenu.Click();
+            ConfirmBuyingButton.Click();
+            UnderstandButton.Click();
+            NotNowButton.Click();
             return this;
         }
     }
