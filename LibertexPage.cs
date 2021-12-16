@@ -27,6 +27,14 @@ namespace Lab8EPAM
         public IWebElement OrderCurrency => _wait.Until(_driver => _driver.FindElement(By.XPath("//*[@id=\"region-active-investments\"]/div/div/div[5]/div/div[1]/div/div[1]/div[1]/div[1]/span[1]")));
         public IWebElement OrderValue => _wait.Until(_driver => _driver.FindElement(By.XPath("//*[@id=\"region-active-investments\"]/div/div/div[5]/div/div[1]/div/div[1]/div[2]/div[2]/span[1]")));
         public IWebElement OrderNumber => _wait.Until(_driver => _driver.FindElement(By.XPath("//*[@id=\"region-active-investments\"]/div/div/div[5]/div/div[1]/div/div[1]/div[2]/div[2]/span[2]")));
+        public IWebElement ActiveDealsButton => _wait.Until(_driver => _driver.FindElement(By.XPath("//*[@id=\"region-header\"]/div[2]/div[1]/div[4]/a[1]")));
+        public IWebElement CloseAllDealsDropmenu => _wait.Until(_driver => _driver.FindElement(By.XPath("//*[@id=\"region-multiple-close-main\"]/div/div")));
+        public IWebElement CloseAllDealsButton => _wait.Until(_driver => _driver.FindElement(By.XPath("//*[@id=\"region-multiple-close-main\"]/div/ul/li[3]")));
+        public IWebElement ConfirmClosingButton => _wait.Until(_driver => _driver.FindElement(By.XPath("//*[@id=\"modal\"]/div/div[2]/span[2]")));
+        public IWebElement BackToInvestigationsButton => _wait.Until(_driver => _driver.FindElement(By.CssSelector("span.a-btn.a-btn-blue.go-trade")));
+        //public IWebElement NoActiveDealsText => _wait.Until(_driver => _driver.FindElement(By.CssSelector("#region-main > div > div.no-active-investments > h3")));
+        public IWebElement InvestedMoneyText => _wait.Until(_driver => _driver.FindElement(By.XPath("//*[@id=\"region-main\"]/div/div[6]/div[2]")));
+        
 
 
         public LibertexPage(IWebDriver driver)
@@ -58,6 +66,15 @@ namespace Lab8EPAM
             ConfirmBuyingButton.Click();
             UnderstandButton.Click();
             NotNowButton.Click();
+            return this;
+        }
+        public LibertexPage CloseAllDeals()
+        {
+            ActiveDealsButton.Click();
+            CloseAllDealsDropmenu.Click();
+            CloseAllDealsButton.Click();
+            ConfirmClosingButton.Click();
+            BackToInvestigationsButton.Click();
             return this;
         }
     }

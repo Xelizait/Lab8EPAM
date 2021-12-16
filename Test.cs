@@ -34,5 +34,14 @@ namespace Lab8EPAM
             Assert.AreEqual(libertexPage.OrderValue.Text, "$5 000");
             Assert.AreEqual(libertexPage.OrderNumber.Text, "100");
         }
+
+        [Test]
+        public void FastCloseAll()
+        {
+            var libertexPage = new LibertexPage(driver);
+            libertexPage.OpenPage().Login().CloseAllDeals();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(8);
+            Assert.AreEqual(libertexPage.InvestedMoneyText.Text, "$0.00");
+        }
     }
 }
